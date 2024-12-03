@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import {Poppins , Playfair_Display} from 'next/font/google'
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const geistPoppins = Poppins({
+  subsets:['latin'],
+  variable: "--font-poppins",
+  weight:["100","200","300","400","500","600","700","800","900"]
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const playFairDisplay = Playfair_Display({
+  subsets:['latin'],
+  variable: "--font-play-fair-display",
+  weight:["400","500","600","700","800","900"]
 });
 
 export const metadata: Metadata = {
@@ -26,9 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${ geistPoppins.variable} ${playFairDisplay.variable} antialiased`}
       >
-        {children}
+       
+      {children}
       </body>
     </html>
   );
