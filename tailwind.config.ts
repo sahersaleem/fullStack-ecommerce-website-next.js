@@ -5,7 +5,7 @@ export default {
     content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
     "./node_modules/tw-elements/js/**/*.js",
 
     // Or if using `src` directory:
@@ -14,14 +14,20 @@ export default {
   ],
   theme: {
   	fontFamily: {
-  		poppins: ['var(--font-poppins)'],
-  		playFairDisplay: ['var(--font-play-fair-display)'],
-		protest:['var(--font-protest)']
+  		poppins: [
+  			'var(--font-poppins)'
+  		],
+  		playFairDisplay: [
+  			'var(--font-play-fair-display)'
+  		],
+  		protest: [
+  			'var(--font-protest)'
+  		]
   	},
   	extend: {
-		screens:{
-                xs:'200px'
-		},
+  		screens: {
+  			xs: '200px'
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

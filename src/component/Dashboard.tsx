@@ -55,6 +55,9 @@ const Dashboard = () => {
             <Link href={"/admin/categories"} className="dashboardLink">
               Categories
             </Link>
+            <Link href={"/admin/orders"} className="dashboardLink">
+       Orders
+            </Link>
             <Link href={"/"} className="dashboardLink">
               Settings
             </Link>

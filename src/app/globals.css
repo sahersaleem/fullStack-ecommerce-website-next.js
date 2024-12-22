@@ -86,8 +86,7 @@
     --chart-5: 27 87% 67%;
 
 
-    --radius: 0.5rem
-  }
+    --radius: 0.5rem}
 
 
 
@@ -258,8 +257,7 @@
     --chart-4: 280 65% 60%;
 
 
-    --chart-5: 340 75% 55%
-  }
+    --chart-5: 340 75% 55%}
 }
 
 @tailwind components;
@@ -285,5 +283,5 @@ p {
   .button{
     @apply w-full text-white bg-black rounded-lg px-2 py-1
   }
-
+  
 }

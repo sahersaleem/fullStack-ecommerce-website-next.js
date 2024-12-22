@@ -13,7 +13,7 @@ const Page = () => {
     <div className="w-full h-screen">
       <CartContextProvider>
         <Navbar />
-        <CartContent />{" "}
+        <CartContent />
       </CartContextProvider>
     </div>
   );
