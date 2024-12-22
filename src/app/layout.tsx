@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {Poppins , Playfair_Display} from 'next/font/google'
 import "./globals.css";
-
+import Dashboard from "@/component/Dashboard";
 const geistPoppins = Poppins({
   subsets:['latin'],
   variable: "--font-poppins",
@@ -25,8 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body
-        className={`${ geistPoppins.variable} ${playFairDisplay.variable} antialiased`}
+        className={`${ geistPoppins.variable} ${playFairDisplay.variable} antialiased flex`}
       >
        
       {children}

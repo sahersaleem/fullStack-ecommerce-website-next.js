@@ -1,16 +1,23 @@
+
+
 import { auth, signIn, signOut } from "@/auth";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { FaHeart, FaSearch } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { context } from "./CartContext";
+import CartLength from "./Cart";
 
 const Navbar = async () => {
+
+ 
   const session = await auth();
   console.log(session);
+
   return (
-    <div className="fixed top-5 z-40 flex items-center justify-around w-full  py-4 ">
+    <div className="fixed top-5 z-40 flex items-center justify-around w-full text-black  py-4 ">
       <div className="flex gap-x-36 items-center">
         <Image
           src={"/images/logo.png"}
@@ -31,19 +38,19 @@ const Navbar = async () => {
             href={"/"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
-            Shop
+            Shop 
           </Link>
           <Link
             href={"/"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
-            Features
+          Categories
           </Link>
           <Link
             href={"/"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
-            Blog
+          Account
           </Link>
           <Link
             href={"/"}
@@ -53,10 +60,10 @@ const Navbar = async () => {
           </Link>
         </div>
       </div>
-      <div className="flex gap-10">
-        <FaSearch />
-        <FaCartShopping />
-        <FaHeart />
+      <div className="flex gap-10 text-xl text-black">
+        <FaSearch className="text-black" />
+       <CartLength/>
+        <FaHeart className="text-black"/>
       </div>
       <div>
         {session && session?.user ? (

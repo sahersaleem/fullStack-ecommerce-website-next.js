@@ -1,7 +1,7 @@
 
 import Dashboard from "@/component/Dashboard";
 import { Kaushan_Script } from "next/font/google";
-
+ 
 
 
 const geistProtest = Kaushan_Script({
@@ -20,8 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistProtest.variable}`}>
-
+      <body className={`${geistProtest.variable} w-full h-screen flex`}>
+      <Dashboard />
        {children}
       </body>
     </html>

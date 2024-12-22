@@ -5,6 +5,7 @@ import Link from "next/link";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IProducts } from "./newProducts/page";
+import CssLoaders from "@/component/cssLoaders";
 
 
 const Page = () => {
@@ -40,21 +41,21 @@ const Page = () => {
 
 
   return (
-    <div className="flex w-full h-screen bg-[#ECF2FF]">
-      <Dashboard />
+    <div className="flex w-full h-auto bg-[#ECF2FF]">
+     
      <div className="flex justify-center items-center flex-grow w-auto h-full flex-col pt-10 pb-9">
       <div className="flex flex-col"> <h1 className="text-4xl font-poppins font-medium">All Products</h1><Link
           href={"/admin/products/newProducts"}
           className=" mt-10 font-poppins text-lg  text-white px-4 py-2 rounded-xl transition-all duration-200 ease-in-out "
         >
-          <Button>Click to Add Products</Button>
+          <button className="button">Click to Add Products</button>
         </Link>
         
 </div>
     
         {
           loading?<div className="h-screen">
-            <h1>Loading....</h1>
+          <CssLoaders/>
           </div>:(
             <div className="flex flex-col w-1/2  px-5 py-10">
             
@@ -65,8 +66,8 @@ const Page = () => {
               >
                 <h1 className="text-2xl">{item.name}</h1>
                 <div className="flex gap-x-2">
-                  <Button className="bg-violet-600"><Link href={`/admin/products/edit/${item._id}`}>Edit</Link></Button>
-                  <Button className="bg-violet-600"><Link href={`/admin/products/delete/${item._id}`}>Delete</Link></Button>
+                  <button className="button"><Link href={`/admin/products/edit/${item._id}`}>Edit</Link></button>
+                  <button className="button"><Link href={`/admin/products/delete/${item._id}`}>Delete</Link></button>
                 </div>
               </div>
             )):<p>Products not found</p>}

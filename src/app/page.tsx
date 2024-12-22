@@ -1,16 +1,22 @@
-import Carousal2 from '@/component/Carousal'
-import Navbar from '@/component/Navbar'
+import Carousal2 from "@/component/Carousal";
+import CartContextProvider from "@/component/CartContext";
+import Footer from "@/component/Footer";
+import Navbar from "@/component/Navbar";
+import Products from "@/component/Products";
 
-import React from 'react'
+import React from "react";
 
 const page = () => {
   return (
-    <div className='w-full h-screen '>
-        <Carousal2/>
-        <Navbar/>
-       
+    <div className="w-full h-screen text-white ">
+      <CartContextProvider>
+        <Carousal2 />
+        <Navbar />
+        <Products />
+        <Footer />
+      </CartContextProvider>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

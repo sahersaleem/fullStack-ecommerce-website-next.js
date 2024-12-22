@@ -1,12 +1,15 @@
 import { Product } from "../../../../models/Products";
 import dbConnect from "@/lib/mongoose";
 import { type NextRequest } from "next/server";
+import { isAdmin } from "@/auth";
+export async function POST(request: Request ,response:Response) {
 
-export async function POST(request: Request) {
+
   try {
     await dbConnect();
+    await isAdmin(response)
     const res = await request.json();
-    const { title, description, name, price, category } = res;
+    const { title, description, name, price, category , images } = res;
 
     const newProducts = await new Product({
       name: name,
@@ -14,6 +17,7 @@ export async function POST(request: Request) {
       category: category,
       description: description,
       price: price,
+      images:images
     });
 
     await newProducts.save();
@@ -25,9 +29,9 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest , response:Response ) {
   await dbConnect();
-
+ await isAdmin(response)
   try {
     const id = request.nextUrl.searchParams.get("id");
     if (id) {
@@ -42,15 +46,16 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function PUT(request: Request) {
+export async function PUT(request: Request , response:Response) {
   try {
     await dbConnect();
+    await isAdmin(response)
     const req = await request.json();
-    const { title, description, name, _id, price, category } = req;
+    const { title, description, name, _id, price, category , images} = req;
 
     const editProducts = await Product.findOneAndUpdate(
       { _id },
-      { title, description, name, price, category }
+      { title, description, name, price, category , images }
     );
     await editProducts.save();
 
@@ -61,12 +66,13 @@ export async function PUT(request: Request) {
   }
 }
 
-export async function DELETE(request:NextRequest){
+export async function DELETE(request:NextRequest , response:Response){
 await dbConnect()
+await isAdmin(response)
   try {
     const id = request.nextUrl.searchParams.get("id");
     const deletedProduct = await Product.findOneAndDelete({_id:id})
-    console.log(deletedProduct)
+   
     return Response.json(true)
 } catch (error) {
   console.log(error.message);

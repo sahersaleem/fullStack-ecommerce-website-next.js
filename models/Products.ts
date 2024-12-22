@@ -15,7 +15,14 @@ const productsSchema = new mongoose.Schema({
   },
   price:{
     type:String
-  }}
+  },
+  images:[{type:String}]
+
+
+
+},{
+  timestamps:true
+}
 )
 
 export const Product = models.Product || model('Product', productsSchema)

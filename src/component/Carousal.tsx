@@ -14,7 +14,7 @@ const Carousal2 = () => {
   return (
     <div
       id="carouselExampleIndicators"
-      className="relative"
+      className="relative h-screen text-black"
       data-twe-carousel-init
       data-twe-ride="carousel"
     >
@@ -116,9 +116,9 @@ const Carousal2 = () => {
           />
           <div className="absolute top-60 left-40  space-y-7">
             <div className="space-y-4">
-              <h1 className="font-poppins text-2xl">Women Collection 2018</h1>
+              <h1 className="font-poppins text-2xl">Men new-Seasons</h1>
               <h2 className="font-playFairDisplay text-6xl text-[#333] font-bold ">
-                NEW SEASON
+               Jacket & Coats
               </h2>
             </div>
             <button

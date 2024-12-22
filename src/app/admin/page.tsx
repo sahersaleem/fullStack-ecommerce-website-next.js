@@ -6,7 +6,7 @@ const page = async () => {
 const session = await auth()
 
 
-  return <div className="bg-[#E3FEF7]">
+  return <div className="bg-[#E3FEF7] ">
 
 
 
