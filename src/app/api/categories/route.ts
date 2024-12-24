@@ -2,6 +2,10 @@ import dbConnect from "@/lib/mongoose";
 import { Category } from "../../../../models/Category";
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/auth";
+
+
+
+
 export async function POST(request: Request ) {
   try {
     await dbConnect();
@@ -24,10 +28,12 @@ export async function POST(request: Request ) {
 }
 
 export async function GET(requst: Request ) {
+
+
   try {
     await dbConnect();
     await isAdmin()
-
+  
     const getCategories = await Category.find({}).populate("parent");
 
     return NextResponse.json({ getCategories });
