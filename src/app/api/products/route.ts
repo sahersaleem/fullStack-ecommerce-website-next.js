@@ -1,13 +1,13 @@
 import { Product } from "../../../../models/Products";
 import dbConnect from "@/lib/mongoose";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { isAdmin } from "@/auth";
-export async function POST(request: Request ,response:Response) {
+export async function POST(request: Request ) {
 
 
   try {
     await dbConnect();
-    await isAdmin(response)
+    await isAdmin()
     const res = await request.json();
     const { title, description, name, price, category , images } = res;
 
@@ -22,16 +22,16 @@ export async function POST(request: Request ,response:Response) {
 
     await newProducts.save();
 
-    return Response.json({ res });
+    return NextResponse.json({ res });
   } catch (error: any) {
     console.log("error", error.message);
-    return Response.json({ status: 300 });
+    return NextResponse.json({ status: 300 });
   }
 }
 
-export async function GET(request: NextRequest , response:Response ) {
+export async function GET(request: NextRequest  ) {
   await dbConnect();
- await isAdmin(response)
+
   try {
     const id = request.nextUrl.searchParams.get("id");
     if (id) {
@@ -39,17 +39,17 @@ export async function GET(request: NextRequest , response:Response ) {
       return Response.json({ productsDataFindById });
     }
     const productsData = await Product.find({});
-    return Response.json({ productsData });
+    return NextResponse.json({ productsData });
   } catch (error: any) {
     console.log(error.message);
-    return Response.json({ status: 300 });
+    return NextResponse.json({ status: 300 });
   }
 }
 
-export async function PUT(request: Request , response:Response) {
+export async function PUT(request: Request ) {
   try {
     await dbConnect();
-    await isAdmin(response)
+    await isAdmin()
     const req = await request.json();
     const { title, description, name, _id, price, category , images} = req;
 
@@ -59,24 +59,24 @@ export async function PUT(request: Request , response:Response) {
     );
     await editProducts.save();
 
-    return Response.json({ editProducts });
+    return NextResponse.json({ editProducts });
   } catch (error: any) {
     console.log(error.message);
-    return Response.json({ status: 300 });
+    return NextResponse.json({ status: 300 });
   }
 }
 
-export async function DELETE(request:NextRequest , response:Response){
+export async function DELETE(request:NextRequest){
 await dbConnect()
-await isAdmin(response)
+await isAdmin()
   try {
     const id = request.nextUrl.searchParams.get("id");
     const deletedProduct = await Product.findOneAndDelete({_id:id})
    
-    return Response.json(true)
-} catch (error) {
+    return NextResponse.json(true)
+} catch (error:any) {
   console.log(error.message);
-  return Response.json({ status: 300 });
+  return NextResponse.json({ status: 300 });
 }
 
 }

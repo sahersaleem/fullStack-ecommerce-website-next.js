@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Dashboard from "@/component/Dashboard";
+
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast"
+
 import { Button } from "@/components/ui/button"
-import { ToastAction } from "@/components/ui/toast"
+
 import axios from "axios";
 import {
   Select,
@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import CssLoaders from "@/component/cssLoaders";
+import CssLoaders from "@/component/Loaders";
 
 export interface ICategory {
   _id: string;
@@ -34,7 +34,7 @@ const Page = () => {
   const [parentCategory, setParentCategory] = useState<string>("");
   const [editing, setEiditing] = useState<boolean>(false);
   const [loading , setLoading] = useState<boolean>(false)
-  const addCategory = async (e) => {
+  const addCategory = async (e:any) => {
     e.preventDefault();
     setLoading(true)
     const category = { categoryName, parentCategory };
@@ -135,9 +135,9 @@ const Page = () => {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <Button className="w-28" onClick={addCategory}>
+            <button className="button w-28" onClick={addCategory}>
               Add category
-            </Button>
+            </button>
           </div>
           <table className="mt-4">
             <thead>

@@ -13,6 +13,7 @@ export default {
     "./node_modules/tw-elements/js/**/*.js"
   ],
   theme: {
+	
   	fontFamily: {
   		poppins: [
   			'var(--font-poppins)'

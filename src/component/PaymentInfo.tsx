@@ -1,11 +1,11 @@
 "use client";
 
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, {  useState } from "react";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 
 
-const PaymentInfo = ({ ids }) => {
+const PaymentInfo = ({ ids }:{ids:string[]}) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [city, setCity] = useState<string>("");
@@ -15,7 +15,7 @@ const PaymentInfo = ({ ids }) => {
   const [street, setStreet] = useState<string>("");
   const products = ids;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     if (
       name &&

@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/mongoose";
 import { Product } from "../../../../models/Products";
-export async function POST(request: Request, response: Response) {
+import { NextResponse } from "next/server";
+export async function POST(request: Request ) {
   try {
     await dbConnect();
     const req = await request.json();
@@ -8,9 +9,9 @@ export async function POST(request: Request, response: Response) {
    
     const productsDataFindById = await Product.find({ _id: id });
     
-    return Response.json(productsDataFindById);
+    return NextResponse.json(productsDataFindById);
   } catch (error: any) {
     console.log(error.message);
-    return Response.json({message:"Error occurred while fetching product data from database"})
+    return NextResponse.json({message:"Error occurred while fetching product data from database"})
   }
 }

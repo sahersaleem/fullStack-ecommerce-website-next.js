@@ -1,11 +1,10 @@
 "use client";
-import Dashboard from "@/component/Dashboard";
-import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IProducts } from "./newProducts/page";
-import CssLoaders from "@/component/cssLoaders";
+import { IProducts } from  "@/component/ProductForm";
+import CssLoaders from "@/component/Loaders";
 
 
 const Page = () => {
@@ -28,20 +27,13 @@ const Page = () => {
 
  
 
-  const getProductsById = async () => {
-    try {
-      const product: IProducts = await axios.delete(`/api/products?id=${id}`);
-      console.log("product deleted successfully!")
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
+  
 
 
 
 
   return (
-    <div className="flex w-full h-auto bg-[#ECF2FF]">
+    <div className="flex w-full h-auto ">
      
      <div className="flex justify-center items-center flex-grow w-auto h-full flex-col pt-10 pb-9">
       <div className="flex flex-col"> <h1 className="text-4xl font-poppins font-medium">All Products</h1><Link
@@ -62,10 +54,10 @@ const Page = () => {
             {products?products.map((item, index) => (
               <div
                 key={index}
-                className="mb-4 border-b border-stone-900 flex justify-between pb-4"
+                className="mb-4 border-b border-stone-900 flex justify-between pb-4 lg:flex-row xs:flex-col"
               >
-                <h1 className="text-2xl">{item.name}</h1>
-                <div className="flex gap-x-2">
+                <h1 className="xs:text-lg lg:text-2xl xs:text-center lg:text-left">{item.name}</h1>
+                <div className="flex gap-x-2 l">
                   <button className="button"><Link href={`/admin/products/edit/${item._id}`}>Edit</Link></button>
                   <button className="button"><Link href={`/admin/products/delete/${item._id}`}>Delete</Link></button>
                 </div>

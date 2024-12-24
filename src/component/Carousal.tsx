@@ -47,22 +47,22 @@ const Carousal2 = () => {
         ></button>
       </div>
 
-      <div className=" w-full overflow-hidden after:clear-both after:block after:content-['']">
+      <div className=" w-full overflow-hidden after:clear-both after:block after:content-[''] bg-black h-screen">
         <div
-          className=" relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className=" relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-screen"
           data-twe-carousel-item
         >
           <Image
             src="/images/image1.png"
-            className="block w-full"
+            className="block w-full h-full object-cover"
             alt="Camera"
             width={1000}
-            height={800}
+            height={1000}
           />
-          <div className="absolute top-60 left-40  space-y-7">
+          <div className="absolute top-60 xs:left-6 lg:left-40  space-y-7">
             <div className="space-y-4">
-              <h1 className="font-poppins text-2xl">Women Collection 2018</h1>
-              <h2 className="font-playFairDisplay text-6xl text-[#333] font-bold ">
+            <h1 className="font-poppins xs:text-xl lg:text-2xl">Women Collection 2018</h1>
+            <h2 className="font-playFairDisplay xs:text-3xl lg:text-6xl text-[#333] font-bold ">
                 NEW SEASON
               </h2>
             </div>
@@ -76,20 +76,20 @@ const Carousal2 = () => {
         </div>
 
         <div
-          className=" float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className=" float-left -mr-[100%] hidden w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-twe-carousel-item
         >
           <Image
             src="/images/image2.png"
-            className="block w-full"
+            className="block w-full h-full object-cover"
             alt="Camera"
             width={1000}
             height={800}
           />
-          <div className="absolute top-60 left-40  space-y-7">
+          <div className="absolute top-60 xs:left-6 lg:left-40  space-y-7">
             <div className="space-y-4">
-              <h1 className="font-poppins text-2xl">Women Collection 2018</h1>
-              <h2 className="font-playFairDisplay text-6xl text-[#333] font-bold ">
+              <h1 className="font-poppins xs:text-xl lg:text-2xl">Men Collection 2018</h1>
+              <h2 className="font-playFairDisplay xs:text-3xl lg:text-6xl text-[#333] font-bold ">
                 NEW SEASON
               </h2>
             </div>
@@ -103,21 +103,21 @@ const Carousal2 = () => {
         </div>
 
         <div
-          className=" float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className=" float-left -mr-[100%] w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-twe-carousel-item
           data-twe-carousel-active
         >
           <Image
             src="/images/image3.png"
-            className="block w-full"
+            className="block w-full h-full object-cover"
             alt="Wild Landscape"
             width={1000}
             height={800}
           />
-          <div className="absolute top-60 left-40  space-y-7">
+          <div className="absolute top-60 xs:left-6 lg:left-40  space-y-7">
             <div className="space-y-4">
-              <h1 className="font-poppins text-2xl">Men new-Seasons</h1>
-              <h2 className="font-playFairDisplay text-6xl text-[#333] font-bold ">
+            <h1 className="font-poppins xs:text-xl lg:text-2xl">Men new-Seasons</h1>
+            <h2 className="font-playFairDisplay xs:text-3xl lg:text-6xl text-[#333] font-bold ">
                Jacket & Coats
               </h2>
             </div>

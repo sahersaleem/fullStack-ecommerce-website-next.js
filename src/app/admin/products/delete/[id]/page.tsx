@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import axios from "axios";
 import { redirect, useParams } from "next/navigation";
-import { IProducts } from "../../newProducts/page";
-import { Button } from "@/components/ui/button";
+import {IProducts}  from  "@/component/ProductForm";
+
 
 const Page = () => {
   const [product, setProduct] = useState<IProducts | null>(null);
@@ -11,8 +11,10 @@ const Page = () => {
 
   const deleteProductsById = async () => {
     try {
-      const products: IProducts = await axios.delete(`/api/products?id=${id}`);
-      setProduct(products.productsData);
+      const products:IProducts= await axios.delete(`/api/products?id=${id}`);
+     
+        setProduct(products)
+      
       console.log("product deleted successfully!");
     } catch (error: any) {
       console.log(error.message);
@@ -35,20 +37,20 @@ const Page = () => {
           Do you want to delete this product?
         </p>
         <div className="space-x-4">
-          <Button
+          <button
             onClick={() => {
               deleteProductsById();
             }}
           >
             Yes
-          </Button>
-          <Button
+          </button>
+          <button
             onClick={() => {
               notDeleteProduct();
             }}
           >
             No
-          </Button>
+          </button>
         </div>
       </div>
     </div>

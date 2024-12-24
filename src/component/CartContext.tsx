@@ -1,16 +1,28 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import React from "react";
 
 import { useEffect } from "react";
 
-export const Cardcontext = createContext({});
+type CartContextType = {
+cartProducts:string[]
+setCartProducts: React.Dispatch<React.SetStateAction<string[]>>
+addProducts:(productId: string)=>void
+removeProduct:(productId: string)=>void
+clearProduct:()=>void
 
-const CartContextProvider = ({ children }) => {
-  const [cartProducts, setCartProducts] = useState<string[]>(
-    JSON.parse(window.localStorage.getItem("cart") || "[]") || []
-  );
+}
+
+export const Cardcontext = createContext<CartContextType|null>(null);
+
+const CartContextProvider = ({ children }:{children:React.ReactNode}) => {
+  const [cartProducts, setCartProducts] = useState<string[]>([]);
+
+  useEffect(()=>{
+   const store = JSON.parse(window.localStorage.getItem("cart") || "[]") || []
+   setCartProducts(store)
+  },[])
 
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -57,3 +69,12 @@ const CartContextProvider = ({ children }) => {
 };
 
 export default CartContextProvider;
+
+export function useCart(){
+
+const context = useContext(Cardcontext)
+if(!context){
+  throw new Error("use cart must be inside the context")
+}
+return context
+}

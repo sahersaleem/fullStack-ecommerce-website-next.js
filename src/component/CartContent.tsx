@@ -2,18 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { Cardcontext } from "./CartContext";
+import { Cardcontext, useCart } from "./CartContext";
 import { IProducts } from "./ProductForm";
 import axios from "axios";
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
-import CssLoaders from "./cssLoaders";
+import CssLoaders from "./Loaders";
 import PaymentInfo from "./PaymentInfo";
-import { useRouter } from "next/navigation";
+
 const CartContent = () => {
   const [productsData, setProductsData] = useState<IProducts[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { cartProducts, addProducts, removeProduct } = useContext(Cardcontext);
+  const { cartProducts, addProducts, removeProduct } = useCart()
 
  
 
@@ -36,11 +36,11 @@ const CartContent = () => {
     findProducts();
   }, [cartProducts]);
 
-  function addmoreProduct(id) {
+  function addmoreProduct(id:string) {
     addProducts(id);
   }
 
-  function removeMoreProduct(id) {
+  function removeMoreProduct(id:string) {
     removeProduct(id);
   }
 
@@ -55,12 +55,12 @@ const CartContent = () => {
   return (
     <div className="w-full h-auto pb-20">
       <div className="max-w-7xl mx-auto mt-36">
-        <h1 className="text-4xl font-poppins mb-14 flex gap-x-1 items-center">
+        <h1 className="text-4xl font-poppins mb-14 flex gap-x-1 items-center xs:ml-9 lg:ml-0">
           Cart <FaShoppingCart className="text-3xl" />
         </h1>
-        <div className="flex gap-x-28">
-          <div className="flex flex-col w-1/2 gap-10 justify-center">
-            <div className="flex  justify-between text-lg font-playFairDisplay ">
+        <div className="flex xs:gap-y-12 lg:gap-x-28 xs:flex-col lg:flex-row">
+          <div className="flex flex-col xs:w-full lg:w-1/2 gap-10 justify-center">
+            <div className="flex  justify-between text-lg font-playFairDisplay xs:hidden lg:flex ">
               <p>Product</p>
               <p>name</p>
               <p>Price</p>
@@ -72,15 +72,17 @@ const CartContent = () => {
               productsData.map((item) => (
                 <div
                   key={item._id}
-                  className="flex justify-between items-center"
+                  className="flex xs:justify-center lg:justify-between items-center xs:flex-col lg:flex-row xs:gap-y-4 lg:gap-y-0"
                 >
+                 {
+                  item.images?
                   <Image
                     src={item.images[0]}
                     alt="image"
                     width={150}
                     height={150}
-                  />
-                  <h1 className="text-xl font-semibold font-poppins">
+                  />:""}
+                  <h1 className="xs:text-lg lg:text-xl font-semibold font-poppins">
                     {item.name}
                   </h1>
                   <h2 className="font-poppins font-medium text-xl">
@@ -91,7 +93,7 @@ const CartContent = () => {
                     <button
                       className="bg-gray-300 px-2 rounded-md"
                       onClick={() => {
-                        addmoreProduct(item._id);
+                        addmoreProduct(item._id!);
                       }}
                     >
                       +
@@ -102,7 +104,7 @@ const CartContent = () => {
                     <button
                       className="bg-gray-300 px-2 rounded-md"
                       onClick={() => {
-                        removeMoreProduct(item._id);
+                        removeMoreProduct(item._id!);
                       }}
                     >
                       -
@@ -111,7 +113,7 @@ const CartContent = () => {
                 </div>
               ))
             ) : (
-              <h1>Please enter products in a cart</h1>
+              <h1 className="text-center">Please enter products in a cart</h1>
             )}
 
             {productsData.length > 0 ? (
@@ -124,8 +126,12 @@ const CartContent = () => {
               ""
             )}
           </div>
-          <div className="w-1/2">
-            <PaymentInfo ids={cartProducts} />
+          <div className="xs:xs:w-full lg:w-1/2">
+          {
+            productsData.length>0?
+          
+            <PaymentInfo ids={cartProducts} />:""
+          }
           </div>
         </div>
       </div>

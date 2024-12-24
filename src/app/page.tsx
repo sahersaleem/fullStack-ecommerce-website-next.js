@@ -11,8 +11,8 @@ const page = () => {
     <div className="w-full h-screen text-white ">
       <CartContextProvider>
         <Carousal2 />
-        <Navbar />
-        <Products />
+       <Navbar/>
+        <Products text="New Arrivals"/>
         <Footer />
       </CartContextProvider>
     </div>

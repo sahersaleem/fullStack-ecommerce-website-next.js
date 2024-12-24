@@ -1,10 +1,10 @@
 'use client'
-import { useContext, useEffect } from "react"
-import { Cardcontext } from "./CartContext"
+import { useContext } from "react"
+import { Cardcontext, useCart } from "./CartContext"
 import { FaCartShopping } from "react-icons/fa6"
 import Link from "next/link"
 const CartLength = () => {
-  const {cartProducts} = useContext(Cardcontext)
+  const {cartProducts} = useCart()
 
 
 

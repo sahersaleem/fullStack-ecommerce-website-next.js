@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import Dashboard from "@/component/Dashboard";
+
 import React from "react";
 import { signOut } from "@/auth";
 import { LogOut } from "lucide-react";

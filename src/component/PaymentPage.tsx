@@ -1,10 +1,10 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
-import CartContextProvider, { Cardcontext } from "@/component/CartContext";
+import CartContextProvider, { Cardcontext, useCart } from "@/component/CartContext";
 import {  useRouter } from "next/navigation";
 const PaymentPage = () => {
-  const { clearProduct } = useContext(Cardcontext);
+  const { clearProduct } = useCart()
   const router = useRouter();
 
   const handleGoBack = () => {

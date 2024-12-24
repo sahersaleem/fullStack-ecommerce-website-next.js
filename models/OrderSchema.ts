@@ -13,6 +13,7 @@ const Order = new mongoose.Schema({
    paid:Boolean
 
 
-})
+},{
+   timestamps:true})
 
 export const OrderSchema = models.OrderSchema ||model('OrderSchema',Order) 

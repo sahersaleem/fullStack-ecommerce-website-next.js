@@ -1,7 +1,7 @@
 import CartContent from "@/component/CartContent";
-import CartContextProvider, { Cardcontext } from "@/component/CartContext";
+import CartContextProvider from "@/component/CartContext";
 import Navbar from "@/component/Navbar";
-import React, { useEffect } from "react";
+import React from "react";
 
 const Page = () => {
 

@@ -10,24 +10,22 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  TableFooter
 } from "@/components/ui/table";
-import { IProducts } from "@/component/ProductForm";
+
 import { Iitems } from "@/app/api/checkout/route";
 
-
 interface IOrder {
-  _id:string,
-  items:Iitems[],
-  name:string,
-  email:string,
-  city:string,
-  postalAddress:string,
-  street:string,
-  paid:boolean,
-  country:string
+  _id: string;
+  items: Iitems[];
+  name: string;
+  email: string;
+  city: string;
+  postalAddress: string;
+  street: string;
+  paid: boolean;
+  country: string;
+  createdAt: string;
 }
-
 
 const Page = () => {
   const [orderData, setOrderData] = useState<IOrder[]>([]);
@@ -36,8 +34,8 @@ const Page = () => {
     const getOrdersData = async () => {
       try {
         const orders = await axios.get("/api/checkout");
-        setOrderData(orders.data.findOrdersDataFromDataBase
-        );
+        console.log(orders);
+        setOrderData(orders.data);
       } catch (error: any) {
         console.log(error.message);
       }
@@ -45,61 +43,48 @@ const Page = () => {
     getOrdersData();
   }, []);
 
- 
-  
-
-  
-    return (
-      <div className="w-full h-screen">
-      {orderData.length>0?
-
-        <Table>
+  return (
+    <div className="w-full h-screen">
+      <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-3/2">Id</TableHead>
             <TableHead className="w-3/2">Customer Information</TableHead>
             <TableHead className="w-3/2">Product</TableHead>
-     
           </TableRow>
         </TableHeader>
         <TableBody>
-          {orderData.map((order , index) => (
+          { orderData.map((order, index) => (
             <>
-            <TableRow key={index}>
-              <TableCell className="font-medium">{order._id}</TableCell>
-              <TableCell className="font-medium">{order.name}<br/>
-              {order.email}<br/>  
-              {order.postalAddress}<br/>
-              {order.street}<br/>
-              {order.country}<br/>
-              
-              
-              
-              </TableCell>
-              <TableCell className="font-medium">{order.items.map((i)=>(
-                <>
-                {i.price_data.product_data.name} x {i.quantity} <br/>
-                </>
-              ))}</TableCell>
-              
-            </TableRow>
+              <TableRow key={index}>
+                <TableCell className="font-medium">{order._id}</TableCell>
+                <TableCell className="font-medium">
+                  {order.name}
+                  <br />
+                  {order.email}
+                  <br />
+                  {order.postalAddress}
+                  <br />
+                  {order.street}
+                  <br />
+                  {order.country}
+                  <br />
+                </TableCell>
+                <TableCell className="font-medium">
+                  {order.items.map((i, index) => (
+                    <h1 key={index}>
+                      {i.price_data.product_data.name} x {i.quantity} <br />
+                    </h1>
+                  ))}
+                </TableCell>
+              </TableRow>
             </>
           ))}
-
         </TableBody>
-        
       </Table>
+    </div>
+  );
+};
 
-
-      :(<p>Product not found</p>)
-      
-      
-      }
-  
-  </div>
-    )
-   
-  }
-  
-  export default Page
+export default Page;

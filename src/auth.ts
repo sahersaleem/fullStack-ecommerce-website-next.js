@@ -10,7 +10,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub, Google],
   adapter: MongoDBAdapter(client),
   callbacks: {
-    session: ({ session, token, user }) => {
+    session:({ session, token, user }) => {
       console.log(session, token, user);
       if (adminEmails.includes(session?.user?.email)) {
         session.user.role = "admin";
@@ -19,18 +19,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.role = "user";
         console.log("user");
       }
+      return session
     },
   },
 });
 
-export async function isAdmin(res) {
+export async function isAdmin() {
   const session = await auth();
 
-  if (session?.user.role == "admin") {
-    return true;
-  } else {
+  if (session?.user.role !== "admin") {
     throw new Error("unauthorized access");
-    res.status(401)
-    res.end()
   }
+  return true;
 }

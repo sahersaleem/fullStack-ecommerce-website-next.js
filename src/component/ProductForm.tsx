@@ -1,12 +1,11 @@
 "use client";
-import Dashboard from "@/component/Dashboard";
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+
 import React, { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
-import { redirect } from "next/navigation";
-import { FaUpload } from "react-icons/fa6";
+
 import { useRouter } from "next/navigation";
 import { ICategory } from "@/app/admin/categories/page";
 import {
@@ -18,16 +17,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import CssLoaders from "./cssLoaders";
+import CssLoaders from "./Loaders";
 
 export interface IProducts {
-  _id: string;
-  title: string;
-  name: string;
-  price: string;
-  description: string;
-  category: string;
-  images: string[];
+  _id?: string;
+  title?: string;
+  name?: string;
+  price?: string;
+  description?: string;
+  category?: string;
+  images?: string[];
 }
 
 const ProductForm = ({
@@ -123,12 +122,12 @@ const ProductForm = ({
   };
 
   useEffect(() => {
-    setTitle(existingTitle);
-    setDescription(existingDescription);
-    setName(existingName);
-    setCategory(existingCategory);
-    setPrice(existingPrice);
-    setImages(existingImages);
+    setTitle(existingTitle!);
+    setDescription(existingDescription!);
+    setName(existingName!);
+    setCategory(existingCategory!);
+    setPrice(existingPrice!);
+    setImages(existingImages!);
   }, [
     existingTitle,
     existingName,
@@ -153,9 +152,9 @@ const ProductForm = ({
 
 
   return (
-    <div className=" text-[#433878] w-[100vw]   ">
+    <div className=" text-[#433878] lg:w-[100vw]   ">
      
-      <div className="flex w-full flex-col justify-center ">
+      <div className="flex lg:w-full flex-col justify-center  ">
         <h1 className="text-center mt-6 text-2xl">
           {_id ? "Edit Product" : " Add Product"}
         </h1>
@@ -242,7 +241,7 @@ const ProductForm = ({
             <button onClick={uploadImages}>{loading?<CssLoaders/>:"upload"}</button>
           </div>
 
-          <button className="bg-black w-[100px]" onClick={saveProduct}>
+          <button className="button w-[100px]" onClick={saveProduct}>
             save
           </button>
         </div>

@@ -6,25 +6,26 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { FaHeart, FaSearch } from "react-icons/fa";
-import { FaCartShopping } from "react-icons/fa6";
-import { context } from "./CartContext";
+
 import CartLength from "./Cart";
+import NavbarComp from "./NavbarComp";
 
 const Navbar = async () => {
 
  
   const session = await auth();
-  console.log(session);
+  // console.log(session);
 
   return (
-    <div className="fixed top-5 z-40 flex items-center justify-around w-full text-black  py-4 ">
-      <div className="flex gap-x-36 items-center">
+    <div className="flex flex-col w-full absolute z-40 top-[15px]">
+    <div className=" flex items-center justify-around w-full text-black py-[18px]  shadow-sm ">
+      <div className="flex gap-x-36 items-center xs:hidden lg:flex">
         <Image
           src={"/images/logo.png"}
           alt="logo"
           width={60}
           height={60}
-          className="max-w-[100%] max-h-[100%] w-32"
+          className="max-w-[100%] max-h-[100%] lg:w-28 "
         />
         <div className="flex gap-x-6 font-poppins font-semibold">
           <Link
@@ -35,7 +36,7 @@ const Navbar = async () => {
             Home
           </Link>
           <Link
-            href={"/"}
+            href={"/user/shop"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
             Shop 
@@ -59,11 +60,11 @@ const Navbar = async () => {
             Contact
           </Link>
         </div>
-      </div>
-      <div className="flex gap-10 text-xl text-black">
-        <FaSearch className="text-black" />
+      </div> 
+      <div className="flex xs:gap-4 lg:gap-10 text-xl text-black  xs:w-full lg:w-auto xs:items-end lg:items-start xs:justify-center lg:justify-end">
+        <FaSearch className="text-black xs:hidden lg:inline-block" />
        <CartLength/>
-        <FaHeart className="text-black"/>
+        <FaHeart className="text-black xs:hidden lg:inline-block"/>
       </div>
       <div>
         {session && session?.user ? (
@@ -93,7 +94,11 @@ const Navbar = async () => {
           </form>
         )}
       </div>
+
     </div>
+    <div className="">   <NavbarComp/></div>
+    
+      </div>
   );
 };
 

@@ -6,9 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa";
 
-import { Button } from "@/components/ui/button";
-import SignOut from "./SignOut";
-import { signOut } from "@/auth";
+
+
 import { FaX } from "react-icons/fa6";
 
 const Dashboard = () => {
@@ -17,7 +16,7 @@ const Dashboard = () => {
   return (
 
     <div
-          className={` ${isOpen?'xs:w-full sm:w-1/4 xs:absolute h-screen lg:relative':'w-16 h-screen '} bg-[#F2F9FF] h-auto px-4 py-6 transition-all duration-500 ease-in-out text-[#433878]`}
+          className={` ${isOpen?'xs:w-full sm:w-1/4 xs:absolute h-screen lg:relative':'w-16 h-screen '} bg-[#F2F9FF] h-auto px-4 py-6 transition-all duration-500 ease-in-out text-[#433878] z-50`}
         >
           <div className="flex items-center justify-between">
           <div className="flex items-center">
