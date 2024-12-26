@@ -19,12 +19,15 @@ const CartContent = () => {
 
   useEffect(() => {
     const findProducts = async () => {
+    
       if (cartProducts.length > 0) {
         try {
+          setLoading(true)
           const productsFinfById = await axios.post("/api/cart", {
             id: cartProducts,
           });
           setProductsData(productsFinfById.data);
+          setLoading(false)
         } catch (error: any) {
           console.log(error.message);
         }
@@ -117,7 +120,7 @@ const CartContent = () => {
             )}
 
             {productsData.length > 0 ? (
-              <div className="flex justify-end w-auto ">
+              <div className="flex justify-end w-auto px-2">
                 <h1 className="text-2xl font-poppins font-semibold">
                   Total <span className="text-lg">${total}</span>{" "}
                 </h1>
@@ -126,7 +129,7 @@ const CartContent = () => {
               ""
             )}
           </div>
-          <div className="xs:xs:w-full lg:w-1/2">
+          <div className="xs:w-full lg:w-1/2">
           {
             productsData.length>0?
           

@@ -85,12 +85,13 @@ const Navbar = async () => {
           </>
         ) : (
           <form
+          className=" flex justify-center items-center "
             action={async () => {
               "use server";
               await signIn("github , google");
             }}
           >
-            <button type="submit" className="font-bold mr-24 px-4 py-2 bg-black text-white rounded-md">Login</button>
+            <button type="submit" className="font-bold px-4 py-2 bg-black text-white rounded-md">Login</button>
           </form>
         )}
       </div>
