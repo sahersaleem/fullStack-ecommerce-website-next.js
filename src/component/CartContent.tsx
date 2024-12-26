@@ -9,6 +9,8 @@ import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 import CssLoaders from "./Loaders";
 import PaymentInfo from "./PaymentInfo";
+import toast , {Toaster} from 'react-hot-toast'
+
 
 const CartContent = () => {
   const [productsData, setProductsData] = useState<IProducts[]>([]);
@@ -41,6 +43,7 @@ const CartContent = () => {
 
   function addmoreProduct(id:string) {
     addProducts(id);
+
   }
 
   function removeMoreProduct(id:string) {
@@ -57,6 +60,7 @@ const CartContent = () => {
 
   return (
     <div className="w-full h-auto pb-20">
+      <Toaster reverseOrder={false} position="top-right"/>
       <div className="max-w-7xl mx-auto mt-36">
         <h1 className="text-4xl font-poppins mb-14 flex gap-x-1 items-center xs:ml-9 lg:ml-0">
           Cart <FaShoppingCart className="text-3xl" />

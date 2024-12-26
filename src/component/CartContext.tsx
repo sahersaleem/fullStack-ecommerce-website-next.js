@@ -4,6 +4,7 @@ import { createContext, useContext, useState } from "react";
 import React from "react";
 
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 type CartContextType = {
   cartProducts: string[];
@@ -11,6 +12,8 @@ type CartContextType = {
   addProducts: (productId: string) => void;
   removeProduct: (productId: string) => void;
   clearProduct: () => void;
+  addProductsInCart: (productId: string) => void;
+
 };
 
 export const Cardcontext = createContext<CartContextType | null>(null);
@@ -34,7 +37,27 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
     setCartProducts((prev) => {
       return [...prev, productId];
     });
+
   }
+
+function addProductsInCart(productId:string){
+   const findProducts = cartProducts.find((id)=>id==productId)
+   console.log(findProducts)
+   if(findProducts){
+      toast.success("Product already added")
+   }
+   else{
+    setCartProducts((prev) => {
+      return [...prev, productId];
+    });
+    toast.success("product add to cart")
+   }
+}
+
+
+
+
+
 
   function removeProduct(productId: string) {
     setCartProducts((prev) => {
@@ -44,6 +67,8 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
       }
       return prev;
     });
+
+    toast.success("product removed from cart!")
   }
 
   function clearProduct() {
@@ -59,6 +84,7 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
         addProducts,
         removeProduct,
         clearProduct,
+        addProductsInCart
       }}
     >
       {children}

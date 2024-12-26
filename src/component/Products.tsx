@@ -9,7 +9,7 @@ import { FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import CssLoaders from "./Loaders";
 import { Cardcontext, useCart } from "./CartContext";
-
+import toast , {Toaster} from 'react-hot-toast'
 import Link from "next/link";
 
 interface IProps {
@@ -24,7 +24,7 @@ const Products = (props:IProps) => {
   const [loading, setLoading] = useState<boolean>(false);
 
 
-  const { addProducts } = useCart()
+  const { addProductsInCart } = useCart()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +40,7 @@ const Products = (props:IProps) => {
   }, []);
 
   const addtoCart = (id: string) => {
-    addProducts(id);
+    addProductsInCart(id);
 
   };
 
@@ -54,6 +54,7 @@ const Products = (props:IProps) => {
         loading ? "h-screen " : "h-auto"
       } h-auto w-full max-w-7xl m-auto py-20 ${props.className}`}
     >
+            <Toaster reverseOrder={false} position="top-center"/>
       <h1 className="font-bold text-5xl mb-10 text-center font-poppins">{props.text}</h1>
       <div className="flex gap-12 flex-row flex-wrap items-center justify-center shadow-sm">
         {loading ? (
