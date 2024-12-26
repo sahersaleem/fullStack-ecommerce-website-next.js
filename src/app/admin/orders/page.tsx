@@ -14,7 +14,7 @@ import {
 
 import { Iitems } from "@/app/api/checkout/route";
 
-interface IOrder {
+export interface IOrder {
   _id: string;
   items: Iitems[];
   name: string;

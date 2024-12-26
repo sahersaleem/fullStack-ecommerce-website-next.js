@@ -54,10 +54,10 @@ const Navbar = async () => {
           Favourite
           </Link>
           <Link
-            href={"/"}
+            href={"/user/orders"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
-             Blog
+           Orders
           </Link>
           <Link
             href={"/"}

@@ -2,7 +2,7 @@ import dbConnect from "@/lib/mongoose";
 import { Product } from "../../../../models/Products";
 import { OrderSchema } from "../../../../models/OrderSchema";
 import Stripe from "stripe";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export interface Iitems {
   quantity: number;
@@ -19,8 +19,7 @@ export async function POST(request: Request) {
   try {
     await dbConnect();
     const req = await request.json();
-    const { products, name, city, email, postalAddress, street, country } =
-      req;
+    const { products, name, city, email, postalAddress, street, country } = req;
 
     const uniqueProducts = [...new Set(products)];
     const productsInfos = await Product.find({ _id: { $in: uniqueProducts } });
@@ -32,7 +31,7 @@ export async function POST(request: Request) {
       );
       if (!productInfo) continue;
 
-      const quantity = products.filter((id:string) => id === product).length;
+      const quantity = products.filter((id: string) => id === product).length;
 
       items.push({
         quantity,
@@ -72,9 +71,15 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
     await dbConnect();
+    const email = req.nextUrl.searchParams.get("userEmail");
+    console.log(email);
+    if (email) {
+      const ordersByEmail = await OrderSchema.find({ email: email });
+      return NextResponse.json({ordersByEmail});
+    }
     const orders = await OrderSchema.find({});
     return NextResponse.json(orders);
   } catch (error: any) {
