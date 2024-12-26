@@ -6,28 +6,29 @@ import React from "react";
 import { useEffect } from "react";
 
 type CartContextType = {
-cartProducts:string[]
-setCartProducts: React.Dispatch<React.SetStateAction<string[]>>
-addProducts:(productId: string)=>void
-removeProduct:(productId: string)=>void
-clearProduct:()=>void
+  cartProducts: string[];
+  setCartProducts: React.Dispatch<React.SetStateAction<string[]>>;
+  addProducts: (productId: string) => void;
+  removeProduct: (productId: string) => void;
+  clearProduct: () => void;
+};
 
-}
+export const Cardcontext = createContext<CartContextType | null>(null);
 
-export const Cardcontext = createContext<CartContextType|null>(null);
-
-const CartContextProvider = ({ children }:{children:React.ReactNode}) => {
+const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartProducts, setCartProducts] = useState<string[]>([]);
 
-  useEffect(()=>{
-   const store = JSON.parse(window.localStorage.getItem("cart") || "[]") || []
-   setCartProducts(store)
-  },[])
+  useEffect(() => {
+    const store = JSON.parse(window.localStorage.getItem("cart")||"[]")
+    if (store.length > 0) {
+      setCartProducts(store);
+    }
+  }, []);
 
   useEffect(() => {
-    if (cartProducts.length > 0) {
+
       localStorage.setItem("cart", JSON.stringify(cartProducts));
-    }
+    
   }, [cartProducts]);
   function addProducts(productId: string) {
     setCartProducts((prev) => {
@@ -46,12 +47,9 @@ const CartContextProvider = ({ children }:{children:React.ReactNode}) => {
   }
 
   function clearProduct() {
-     localStorage.removeItem('cart')
-     console.log("get cleared")
-    }
-
-  
-  
+    localStorage.removeItem("cart");
+    console.log("get cleared");
+  }
 
   return (
     <Cardcontext.Provider
@@ -70,11 +68,10 @@ const CartContextProvider = ({ children }:{children:React.ReactNode}) => {
 
 export default CartContextProvider;
 
-export function useCart(){
-
-const context = useContext(Cardcontext)
-if(!context){
-  throw new Error("use cart must be inside the context")
-}
-return context
+export function useCart() {
+  const context = useContext(Cardcontext);
+  if (!context) {
+    throw new Error("use cart must be inside the context");
+  }
+  return context;
 }

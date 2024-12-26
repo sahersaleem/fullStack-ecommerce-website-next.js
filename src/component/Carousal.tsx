@@ -27,7 +27,7 @@ const Carousal2 = () => {
           data-twe-target="#carouselExampleIndicators"
           data-twe-slide-to="0"
           data-twe-carousel-active
-          className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[1500ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
           aria-current="true"
           aria-label="Slide 1"
         ></button>
@@ -35,21 +35,21 @@ const Carousal2 = () => {
           type="button"
           data-twe-target="#carouselExampleIndicators"
           data-twe-slide-to="1"
-          className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[1500ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
           aria-label="Slide 2"
         ></button>
         <button
           type="button"
           data-twe-target="#carouselExampleIndicators"
           data-twe-slide-to="2"
-          className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[1500ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
           aria-label="Slide 3"
         ></button>
       </div>
 
-      <div className=" w-full overflow-hidden after:clear-both after:block after:content-[''] bg-black h-screen">
+      <div className=" w-full overflow-hidden after:clear-both after:block after:content-[''] bg-black h-screen mt-[92px]">
         <div
-          className=" relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-screen"
+          className=" relative float-left -mr-[100%] hidden w-full transition-transform duration-[1500ms] ease-in-out motion-reduce:transition-none h-screen"
           data-twe-carousel-item
         >
           <Image
@@ -76,7 +76,7 @@ const Carousal2 = () => {
         </div>
 
         <div
-          className=" float-left -mr-[100%] hidden w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className=" float-left -mr-[100%] hidden w-full h-screen transition-transform duration-[1500ms] ease-in-out motion-reduce:transition-none"
           data-twe-carousel-item
         >
           <Image
@@ -103,7 +103,7 @@ const Carousal2 = () => {
         </div>
 
         <div
-          className=" float-left -mr-[100%] w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          className=" float-left -mr-[100%] w-full h-screen transition-transform duration-[1500ms] ease-in-out motion-reduce:transition-none"
           data-twe-carousel-item
           data-twe-carousel-active
         >
