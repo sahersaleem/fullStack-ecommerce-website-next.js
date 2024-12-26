@@ -17,7 +17,7 @@ const Navbar = async () => {
   // console.log(session);
 
   return (
-    <div className="flex flex-col w-full absolute z-40 top-[15px] ">
+    <div className="flex flex-col w-full absolute z-40 top-[15px] justify-center">
     <div className=" flex items-center justify-around w-full text-black py-[18px]  shadow-sm ">
       <div className="flex gap-x-36 items-center xs:hidden lg:flex justify-center">
         <Image
@@ -90,7 +90,7 @@ const Navbar = async () => {
               await signIn("github , google");
             }}
           >
-            <button type="submit" className="font-bold mr-24">login</button>
+            <button type="submit" className="font-bold mr-24 px-4 py-2 bg-black text-white rounded-md">Login</button>
           </form>
         )}
       </div>
