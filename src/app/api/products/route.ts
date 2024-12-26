@@ -31,9 +31,16 @@ export async function POST(request: Request ) {
 
 export async function GET(request: NextRequest  ) {
   await dbConnect();
-
+ 
   try {
+   
+   
     const id = request.nextUrl.searchParams.get("id");
+    const category = request.nextUrl.searchParams.get("categoryId");
+    if (category) {
+      const productsDataFindByCategory = await Product.find({ category: category });
+      return Response.json({ productsDataFindByCategory});
+    }
     if (id) {
       const productsDataFindById = await Product.findOne({ _id: id });
       return Response.json({ productsDataFindById });

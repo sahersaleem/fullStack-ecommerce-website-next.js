@@ -32,7 +32,7 @@ export async function GET(requst: Request ) {
 
   try {
     await dbConnect();
-    await isAdmin()
+    
   
     const getCategories = await Category.find({}).populate("parent");
 

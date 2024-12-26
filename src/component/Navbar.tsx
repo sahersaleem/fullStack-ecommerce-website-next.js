@@ -42,16 +42,22 @@ const Navbar = async () => {
             Shop 
           </Link>
           <Link
-            href={"/"}
+            href={"/user/categories"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
           Categories
           </Link>
           <Link
+            href={""}
+            className="hover:text-[#717fe0] transition-all 0.3 ease"
+          >
+          Favourite
+          </Link>
+          <Link
             href={"/"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
-          Account
+             Blog
           </Link>
           <Link
             href={"/"}

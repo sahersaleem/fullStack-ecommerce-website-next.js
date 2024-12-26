@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body
-        className={`${ geistPoppins.variable} ${playFairDisplay.variable} antialiased flex overscroll-y-none`}
+        className={`${ geistPoppins.variable} ${playFairDisplay.variable} antialiased flex overscroll-y-none overflow-x-hidden`}
       >
       
       {children}
