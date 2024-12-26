@@ -13,12 +13,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { IOrder } from "@/app/admin/orders/page";
+import CssLoaders from "./Loaders";
 const Orders = ({ userEmail }: { userEmail: string }) => {
   const [userOrder, setUserOrder] = useState<IOrder[]>([]);
+  const [loading , setLoading]=useState<boolean>(false)
   useEffect(() => {
     const getOrderofSpecificUser = async () => {
+      setLoading(true)
       const res = await axios.get(`/api/checkout?userEmail=${userEmail}`);
       setUserOrder(res.data.ordersByEmail);
+      setLoading(false)
+
     };
     getOrderofSpecificUser();
   }, [userEmail]);
@@ -27,27 +32,16 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
       <TableCaption>A list of your recent Orders.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-3/2">Customer Information</TableHead>
           <TableHead className="w-3/2">Product</TableHead>
           <TableHead className="w-3/2">Payment</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
+        {loading && <div className="w-full h-screen flex items-center justify-center"><CssLoaders/></div>}
         {userOrder.map((order, index) => (
           <>
             <TableRow key={order._id}>
-              <TableCell className="font-medium">
-                {order.name}
-                <br />
-                {order.email}
-                <br />
-                {order.postalAddress}
-                <br />
-                {order.street}
-                <br />
-                {order.country}
-                <br />
-              </TableCell>
+            
               <TableCell className="font-medium">
                 {order.items.map((i, index) => (
                   <h1 key={index}>

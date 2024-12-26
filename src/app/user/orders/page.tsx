@@ -12,7 +12,7 @@ const Page = async () => {
       <CartContextProvider>
         <Navbar />
 
-        <h1 className="text-4xl font-poppins mt-16 text-center ">
+        <h1 className="text-4xl font-poppins mt-32 text-center ">
           Your Orders!
         </h1>
         <div>
