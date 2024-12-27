@@ -5,7 +5,8 @@ import Navbar from "./Navbar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Footer from "./Footer";
-import { FaEnvelope, FaMap, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaLocationArrow, FaMap, FaPhone } from "react-icons/fa";
+import { FaLocationDot, FaMapLocation } from "react-icons/fa6";
 
 const Contact = () => {
   return (
@@ -28,13 +29,13 @@ const Contact = () => {
             <Textarea placeholder="Enter your message..." cols={8} rows={8} />
             <button className="text-center button">Submit</button>
           </div>
-          <div className="xs:w-full lg:w-1/2 border-gray-400 border xs:p-10 lg:p-20 rounded-xl flex flex-col gap-6 ">
+          <div className="xs:w-full lg:w-1/2 border-gray-400 border xs:p-10 lg:p-20 rounded-xl flex flex-col gap-6 justify-center ">
             <div className="flex gap-x-6">
-              <FaMap />
+              <FaLocationDot />
               <div className="flex flex-col gap-y-2">
                 {" "}
                 <h1 className="text-xl">Address</h1>
-                <p className="font-poppins text-lg">
+                <p className="font-poppins text-lg text-[#717fe0]">
                   Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018
                   US
                 </p>
@@ -44,7 +45,7 @@ const Contact = () => {
               <FaPhone />
               <div className="flex flex-col gap-y-2">
                 <h1 className="text-xl">Lets Talk</h1>
-                <p>+1 800 1236879</p>
+                <p className="font-poppins text-lg text-[#717fe0]">+1 800 1236879</p>
               </div>
             </div>
             <div>
@@ -52,7 +53,7 @@ const Contact = () => {
                 <FaEnvelope />
                 <div className="flex flex-col gap-y-2">
                   <h1 className="text-xl">Sales Support</h1>
-                  <p>contact@example.com</p>
+                  <p className="font-poppins text-lg text-[#717fe0]">contact@example.com</p>
                 </div>
               </div>
             </div>
