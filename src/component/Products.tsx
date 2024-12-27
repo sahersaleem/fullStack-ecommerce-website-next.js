@@ -65,7 +65,7 @@ const Products = (props:IProps) => {
               key={index}
               className="flex justify-between pb-4 flex-col gap-2 "
             >
-           <Link href={`/user/${item._id}`} > 
+          
            
            {
             item.images?
@@ -81,7 +81,7 @@ const Products = (props:IProps) => {
               />:""
               
               
-           }</Link>
+           }
               <div className="flex justify-between">
                 {" "}
                 <div>
@@ -91,7 +91,7 @@ const Products = (props:IProps) => {
                   </h2>
                   <p className="font-bold text-2xl">${item.price}</p>
                 </div>
-                <FaHeart className="  border-black hover:text-[#717fe0] mt-4" />
+               <button className="text-blue-500  font-poppins text-lg underline"><Link href={`/user/${item._id}`} >  View</Link></button> 
               </div>
               <button
                 className="flex items-center justify-center gap-x-2 border-black/65 border-[2px] mt-4 px-4 py-2 hover:bg-[#717fe0] hover:text-white hover:border-none transition-all duration-300 ease-out"

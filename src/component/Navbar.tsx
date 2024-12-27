@@ -47,12 +47,7 @@ const Navbar = async () => {
           >
           Categories
           </Link>
-          <Link
-            href={""}
-            className="hover:text-[#717fe0] transition-all 0.3 ease"
-          >
-          Favourite
-          </Link>
+        
           <Link
             href={"/user/orders"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
@@ -60,7 +55,7 @@ const Navbar = async () => {
            Orders
           </Link>
           <Link
-            href={"/"}
+            href={"/user/contact"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
             Contact
@@ -68,9 +63,9 @@ const Navbar = async () => {
         </div>
       </div> 
       <div className="flex xs:gap-4 lg:gap-10 text-xl text-black  xs:w-full lg:w-auto xs:items-end lg:items-start xs:justify-center lg:justify-end">
-        <FaSearch className="text-black xs:hidden lg:inline-block" />
+      
        <CartLength/>
-        <FaHeart className="text-black xs:hidden lg:inline-block"/>
+       
       </div>
       <div>
         {session && session?.user ? (

@@ -41,12 +41,7 @@ const [isOpen , setIsOpen] = useState<boolean>(false)
           >
           Categories
           </Link>
-          <Link
-            href={""}
-            className="hover:text-[#717fe0] transition-all 0.3 ease"
-          >
-          Favourite
-          </Link>
+          
           <Link
             href={"/user/orders"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
@@ -54,7 +49,7 @@ const [isOpen , setIsOpen] = useState<boolean>(false)
            Orders
           </Link>
           <Link
-            href={"/"}
+            href={"/user/contact"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
           >
             Contact

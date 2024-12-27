@@ -36,10 +36,10 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
           <TableHead className="w-3/2">Payment</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      
         {loading && <div className="w-full h-screen flex items-center justify-center"><CssLoaders/></div>}
         {userOrder.map((order, index) => (
-          <>
+          <TableBody key={order._id}>
             <TableRow key={order._id}>
             
               <TableCell className="font-medium">
@@ -53,14 +53,14 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
                 {
                   order.items.map((i , index)=>(
                     <h1 key={index}> ${
-                      i.price_data.unit_amount}</h1>
+                     Math.round(i.price_data.unit_amount/100 * i.quantity)}</h1>
                   ))
                 }
               </TableCell>
             </TableRow>
-          </>
+            </TableBody>
         ))}
-      </TableBody>
+    
     </Table>
   );
 };
