@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/table";
 import { IOrder } from "@/app/admin/orders/page";
 import CssLoaders from "./Loaders";
+import { Card } from "@/components/ui/card";
 const Orders = ({ userEmail }: { userEmail: string }) => {
   const [userOrder, setUserOrder] = useState<IOrder[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -28,18 +29,19 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
     getOrderofSpecificUser();
   }, [userEmail]);
   return (
-    <div className="w-full h-auto mt-10  lg:px-10 pb-10">
+    <div className="w-full h-auto mt-10  xs:px-5 lg:px-10 pb-10">
       <div className="flex flex-wrap gap-10 justify-center items-center ">
         {userOrder.map((i, index) => (
-          <div key={i._id} className="shadow-xl p-4 max-w-sm xs:max-h-[450px] xs:h-[450px] lg:h-[400px] lg:max-h-[400px]">
-           
+          <Card
+            key={i._id}
+            className="shadow-xl p-4 max-w-sm xs:max-h-[450px] xs:h-[450px] lg:h-[400px] lg:max-h-[400px]"
+          >
             <Table>
               <TableHeader>
-                
                 <TableRow>
-                <TableHead className="">Products</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Quantity</TableHead>
+                  <TableHead className="">Products</TableHead>
+                  <TableHead>Price</TableHead>
+                  <TableHead>Quantity</TableHead>
                 </TableRow>
               </TableHeader>
 
@@ -47,19 +49,31 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
                 {i.items.map((item, index) => (
                   <TableRow key={index} className="text-sm">
                     <TableCell className="px-5">
-                      {item.price_data.product_data.name} 
+                      {item.price_data.product_data.name}
                     </TableCell>
-                    <TableCell className="px-5">${Math.round(item.price_data.unit_amount / 100 * item.quantity )}</TableCell>
+                    <TableCell className="px-5">
+                      $
+                      {Math.round(
+                        (item.price_data.unit_amount / 100) * item.quantity
+                      )}
+                    </TableCell>
                     <TableCell className="px-5"> {item.quantity}</TableCell>
-        
                   </TableRow>
-                  
                 ))}
-                            <TableCell className="px-5 "> status : <span className="text-green-900 font-playFairDisplay font-semibold">Paid</span></TableCell>
+                <TableCell className="px-5 ">
+                  {" "}
+                  status :{" "}
+                  <span className="text-green-900 font-playFairDisplay font-semibold">
+                    Paid
+                  </span>
+                </TableCell>
+                
               </TableBody>
-              <TableCaption className=" text-center text-xs w-full">Date : {(i.createdAt.substring(0 , 10))}</TableCaption>
+              <TableCaption className=" text-center text-xs w-full">
+                Date : {i.createdAt.substring(0, 10)}
+              </TableCaption>
             </Table>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
