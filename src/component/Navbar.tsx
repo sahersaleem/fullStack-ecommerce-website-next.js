@@ -9,6 +9,7 @@ import { FaHeart, FaSearch } from "react-icons/fa";
 
 import CartLength from "./Cart";
 import NavbarComp from "./NavbarComp";
+import { LogOut } from "lucide-react";
 
 const Navbar = async () => {
 
@@ -62,7 +63,7 @@ const Navbar = async () => {
           </Link>
         </div>
       </div> 
-      <div className="flex xs:gap-4 lg:gap-10 text-xl text-black  xs:w-full lg:w-auto xs:items-end lg:items-start xs:justify-center lg:justify-end">
+      <div className="flex xs:gap-4 lg:gap-10 text-xl text-black  xs:w-full lg:w-auto xs:items-end lg:items-start justify-end mr-10 ">
       
        <CartLength/>
        
@@ -70,18 +71,18 @@ const Navbar = async () => {
       <div>
         {session && session?.user ? (
           <>
-            <form className="flex gap-5"
+            <form className="flex xs:gap-2 lg:gap-5 justify-center items-center"
               action={async () => {
                 "use server";
                 await signOut({ redirectTo: "/" });
               }}
             >
-              <button type="submit" className="font-light">Logout</button>
+              <button type="submit" className="font-light"><LogOut/></button>
 
               <Avatar>
                 <AvatarImage src={session.user.image!} />
                 <AvatarFallback>{session.user.name}</AvatarFallback>
-              </Avatar>
+              </Avatar> 
             </form>
           </>
         ) : (
@@ -92,13 +93,14 @@ const Navbar = async () => {
               await signIn("github , google");
             }}
           >
-            <button type="submit" className="font-bold px-4 py-2 bg-black text-white rounded-md mr-4">Login</button>
+            <div className="flex  justify-center items-center"><button type="submit" className="font-bold font-poppins px-2 py-2  text-black rounded-md mr-4 text-[16px] ">Login</button>
+              </div>
           </form>
         )}
       </div>
 
     </div>
-    <div className="">   <NavbarComp/></div>
+    <div className="mt-[2px]">   <NavbarComp/></div>
     
       </div>
   );

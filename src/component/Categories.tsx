@@ -28,6 +28,7 @@ const Categories = () => {
       const categoriesData = await axios.get("/api/categories");
       console.log(categoriesData.data.getCategories);
       setCategories(categoriesData.data.getCategories);
+      setCategory(categoriesData.data.getCategories[0]._id)
   
     };
     getCategoriesFromDatabase();

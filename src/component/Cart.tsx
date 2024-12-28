@@ -14,8 +14,8 @@ const CartLength = () => {
 
 
   return (
-    <div className="">
-       <Link href={"/user/cart"} ><FaCartShopping className="text-black relative" /> <p className="absolute top-1 text-[14px] bg-[#717fe0] text-white rounded-full px-2">{cartProducts.length}</p></Link> 
+    <div className=" relative">
+       <Link href={"/user/cart"}  ><FaCartShopping className="text-black " /> <span className="absolute -top-[22px] text-[12px] left-[18px] bg-[#717fe0] text-white rounded-full px-[10px]">{cartProducts.length}</span></Link> 
     </div>
   )
 }

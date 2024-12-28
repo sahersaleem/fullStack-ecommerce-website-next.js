@@ -10,7 +10,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import CssLoaders from "./Loaders";
 import PaymentInfo from "./PaymentInfo";
 import toast , {Toaster} from 'react-hot-toast'
-
+import debounce from 'lodash.debounce'
 
 const CartContent = () => {
   const [productsData, setProductsData] = useState<IProducts[]>([]);
@@ -20,7 +20,7 @@ const CartContent = () => {
  
 
   useEffect(() => {
-    const findProducts = async () => {
+    const findProducts = debounce( async () => {
     
       if (cartProducts.length > 0) {
         try {
@@ -36,9 +36,11 @@ const CartContent = () => {
       } else {
         setProductsData([]);
       }
-    };
+    },3000)
+findProducts()
 
-    findProducts();
+return ()=>findProducts.cancel()
+  
   }, [cartProducts]);
 
   function addmoreProduct(id:string) {

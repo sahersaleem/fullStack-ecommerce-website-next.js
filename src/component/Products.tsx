@@ -9,22 +9,19 @@ import { FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import CssLoaders from "./Loaders";
 import { Cardcontext, useCart } from "./CartContext";
-import toast , {Toaster} from 'react-hot-toast'
+import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 
 interface IProps {
-  text:string,
-  className?:string
+  text: string;
+  className?: string;
 }
 
-
-
-const Products = (props:IProps) => {
+const Products = (props: IProps) => {
   const [products, setProducts] = useState<IProducts[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-
-  const { addProductsInCart } = useCart()
+  const { addProductsInCart, cartProducts, removeProduct } = useCart();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,12 +38,12 @@ const Products = (props:IProps) => {
 
   const addtoCart = (id: string) => {
     addProductsInCart(id);
-
   };
 
-
-
-
+  const removeFromCart=(id:string)=>{
+   removeProduct(id)
+   toast.success("Product removed from cart!")
+  }
   console.log(products);
   return (
     <div
@@ -54,8 +51,10 @@ const Products = (props:IProps) => {
         loading ? "h-screen " : "h-auto"
       } h-auto w-full max-w-7xl m-auto py-20 ${props.className}`}
     >
-            <Toaster reverseOrder={false} position="top-center"/>
-      <h1 className="font-bold text-5xl mb-10 text-center font-poppins">{props.text}</h1>
+      <Toaster reverseOrder={false} position="top-center" />
+      <h1 className="font-bold text-5xl mb-10 text-center font-poppins">
+        {props.text}
+      </h1>
       <div className="flex gap-12 flex-row flex-wrap items-center justify-center shadow-sm">
         {loading ? (
           <CssLoaders />
@@ -65,23 +64,17 @@ const Products = (props:IProps) => {
               key={index}
               className="flex justify-between pb-4 flex-col gap-2 "
             >
-          
-           
-           {
-            item.images?
-           
-           
-           
-            <Image
-                src={item.images[0]}
-                alt="image"
-                width={250}
-                height={400}
-                className="object-cover object-center transform transition-transform duration-300 hover:scale-110"
-              />:""
-              
-              
-           }
+              {item.images ? (
+                <Image
+                  src={item.images[0]}
+                  alt="image"
+                  width={250}
+                  height={400}
+                  className="object-cover object-center transform transition-transform duration-300 hover:scale-110"
+                />
+              ) : (
+                ""
+              )}
               <div className="flex justify-between">
                 {" "}
                 <div>
@@ -91,17 +84,29 @@ const Products = (props:IProps) => {
                   </h2>
                   <p className="font-bold text-2xl">${item.price}</p>
                 </div>
-               <button className="text-blue-500  font-poppins text-lg underline"><Link href={`/user/${item._id}`} >  View</Link></button> 
+                <button className="text-blue-500  font-poppins text-lg underline">
+                  <Link href={`/user/${item._id}`}> View</Link>
+                </button>
               </div>
-              <button
-                className="flex items-center justify-center gap-x-2 border-black/65 border-[2px] mt-4 px-4 py-2 hover:bg-[#717fe0] hover:text-white hover:border-none transition-all duration-300 ease-out"
-                onClick={() => {
-                  addtoCart(item._id!);
-                }}
-              >
-               Add to Cart <FaCartShopping/>
-              </button>
-             
+              {cartProducts.find((id) => id == item._id) ? (
+                <button
+                  className="flex items-center justify-center gap-x-2 border-black/65 border-[2px] mt-4 px-4 py-2 hover:bg-[#717fe0] hover:text-white hover:border-none transition-all duration-300 ease-out"
+                  onClick={() => {
+                    removeFromCart(item._id!);
+                  }}
+                >
+                  Remove from Cart
+                </button>
+              ) : (
+                <button
+                  className="flex items-center justify-center gap-x-2 border-black/65 border-[2px] mt-4 px-4 py-2 hover:bg-[#717fe0] hover:text-white hover:border-none transition-all duration-300 ease-out"
+                  onClick={() => {
+                    addtoCart(item._id!);
+                  }}
+                >
+                  Add to Cart <FaCartShopping />
+                </button>
+              )}
             </div>
           ))
         )}

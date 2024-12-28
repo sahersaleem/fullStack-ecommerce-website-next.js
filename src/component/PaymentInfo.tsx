@@ -71,6 +71,7 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
             placeholder="email"
             value={email}
             name="email"
+            type="email"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
