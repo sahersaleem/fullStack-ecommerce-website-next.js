@@ -13,6 +13,12 @@ const productsSchema = new mongoose.Schema({
   description:{
     type:String
   },
+    quantity:{
+      type:Number,
+      required:false,
+      default:1
+    },
+  
   price:{
     type:String
   },

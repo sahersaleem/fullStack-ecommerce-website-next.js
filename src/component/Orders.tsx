@@ -31,6 +31,7 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
   return (
     <div className="w-full h-auto mt-10  xs:px-5 lg:px-10 pb-10">
       <div className="flex flex-wrap gap-10 justify-center items-center ">
+        {loading&&<div className="flex justify-center items-center w-full h-screen"><CssLoaders/></div>}
         {userOrder.map((i, index) => (
           <Card
             key={i._id}

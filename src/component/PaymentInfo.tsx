@@ -66,6 +66,7 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
             onChange={(e) => {
               setName(e.target.value);
             }}
+           
           />
           <Input
             placeholder="email"

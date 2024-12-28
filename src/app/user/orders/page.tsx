@@ -4,9 +4,13 @@ import Orders from "@/component/Orders";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 import CartContextProvider from "@/component/CartContext";
+import { redirect } from "next/navigation";
 const Page = async () => {
   const session = await auth();
   const userEmail = session?.user.email;
+  if(!session?.user.email){
+    redirect('/')
+  }
   return (
     <div className=" w-full h-auto">
       <CartContextProvider>

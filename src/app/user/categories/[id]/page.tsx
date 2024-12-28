@@ -29,10 +29,23 @@ const Page = () => {
     };
     getProductsAccordingToCategories();
   }, [id]);
+  useEffect(() => {
+    const getCategoriesFromDatabase = async () => {
+      const categoriesData = await axios.get("/api/categories");
+      console.log(categoriesData.data.getCategories);
+      setCategories(categoriesData.data.getCategories);
+      const iid = categories.find((c) => c._id == id);
+      setCategory(iid!.name);
+    };
+    getCategoriesFromDatabase();
+  }, [categories, id]);
   return (
-    
-      <div className="flex gap-12 flex-row overflow-x-hidden mt-36 flex-wrap items-center justify-center shadow-sm  max-w-5xl mx-auto pb-10">
-          <Toaster reverseOrder={false} position="top-center"/>
+    <div className="w-[100vw] h-auto flex-col mt-36 ">
+    <h1 className="text-center text-4xl font-poppins">
+           
+      {category}</h1>
+      <Toaster reverseOrder={false} position="top-center" />
+      <div className="flex gap-12 flex-row overflow-x-hidden mt-20 flex-wrap items-center justify-center shadow-sm  max-w-5xl mx-auto pb-10 w-[100vw]">
         {loading && (
           <div className="w-full h-[70vh] flex justify-center items-center">
             <CssLoaders />
@@ -55,7 +68,8 @@ const Page = () => {
         ) : (
           <p>products not found</p>
         )}
-   </div>
+      </div>
+    </div>
   );
 };
 

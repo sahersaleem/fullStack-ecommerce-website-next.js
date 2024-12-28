@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="flex flex-col overflow-x-hidden"
+      <body className="flex flex-col overflow-x-hidden w-full "
        
       >
       <CartContextProvider><Navbar/>{children}<Footer/></CartContextProvider>

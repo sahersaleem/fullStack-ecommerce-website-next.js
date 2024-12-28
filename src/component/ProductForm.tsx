@@ -27,6 +27,7 @@ export interface IProducts {
   description?: string;
   category?: string;
   images?: string[];
+  quantity?:number
 }
 
 const ProductForm = ({

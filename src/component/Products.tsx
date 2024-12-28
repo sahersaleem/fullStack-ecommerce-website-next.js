@@ -84,19 +84,12 @@ const Products = (props: IProps) => {
                   </h2>
                   <p className="font-bold text-2xl">${item.price}</p>
                 </div>
-                <button className="text-blue-500  font-poppins text-lg underline">
+                <button className="text-[#717fe0]  font-poppins text-lg underline">
                   <Link href={`/user/${item._id}`}> View</Link>
                 </button>
               </div>
               {cartProducts.find((id) => id == item._id) ? (
-                <button
-                  className="flex items-center justify-center gap-x-2 border-black/65 border-[2px] mt-4 px-4 py-2 hover:bg-[#717fe0] hover:text-white hover:border-none transition-all duration-300 ease-out"
-                  onClick={() => {
-                    removeFromCart(item._id!);
-                  }}
-                >
-                  Remove from Cart
-                </button>
+              <p className="text-[#717fe0] text-center text-sm font-poppins bg-slate-100 px-2 py-1">Added in Cart</p>
               ) : (
                 <button
                   className="flex items-center justify-center gap-x-2 border-black/65 border-[2px] mt-4 px-4 py-2 hover:bg-[#717fe0] hover:text-white hover:border-none transition-all duration-300 ease-out"
