@@ -6,6 +6,7 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/component/**/*.{js,ts,jsx,tsx}",
     "./node_modules/tw-elements/js/**/*.js",
 
     // Or if using `src` directory:

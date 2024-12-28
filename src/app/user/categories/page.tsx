@@ -6,11 +6,10 @@ import Footer from '@/component/Footer'
 const page = () => {
   return (
     <div>
-      <CartContextProvider>
-        <Navbar/>
+      
         <Categories/>
-        <Footer/>
-      </CartContextProvider>
+      
+      
     </div>
   )
 }
