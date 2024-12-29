@@ -17,8 +17,13 @@ const PaymentInfo = ({ ids }: { ids: string[] }) => {
   const products = ids;
 
   useEffect(() => {
- const {name , email , country , street , postalAddress , city} = JSON.parse( localStorage.getItem("paymentInfo")!)
- console.log(name , email , country , street , postalAddress , city)
+ const paymentInfo =  localStorage.getItem("paymentInfo")
+ 
+
+if(paymentInfo){
+  const {name , email , city , country , street , postalAddress} = JSON.parse(paymentInfo)
+
+
  if(name && email && country && street && postalAddress && city){
   setName(name)
   setCity(city)
@@ -27,7 +32,7 @@ const PaymentInfo = ({ ids }: { ids: string[] }) => {
   setStreet(street)
   setPostalAddress(postalAddress)
  }
-
+}
 
  
 
