@@ -36,7 +36,7 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
         {userOrder && userOrder.map((i, index) => (
           <Card
             key={i._id}
-            className="shadow-xl p-4 max-w-sm xs:max-h-[450px] xs:h-[450px] lg:h-[400px] lg:max-h-[400px]"
+            className="shadow-xl p-4 max-w-sm  xs:h-auto lg:h-auto pb-10 "
           >
             <Table>
               <TableHeader>
