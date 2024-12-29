@@ -71,7 +71,7 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
                 
               </TableBody>
               <TableCaption className=" text-center text-xs w-full">
-                Date : {i.createdAt.substring(0, 10)}
+                Date : {i.createdAt?.substring(0, 10)}
               </TableCaption>
             </Table>
           </Card>
