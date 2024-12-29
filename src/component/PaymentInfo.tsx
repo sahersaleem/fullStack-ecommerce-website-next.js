@@ -3,6 +3,7 @@
 import React, {  useState } from "react";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
+import CssLoaders from "./Loaders";
 
 
 const PaymentInfo = ({ ids }:{ids:string[]}) => {
@@ -13,9 +14,11 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
 
   const [country, setCountry] = useState<string>("");
   const [street, setStreet] = useState<string>("");
+  const [loading , setLoading] = useState<boolean>(false)
   const products = ids;
 
   const handleSubmit = async (e:any) => {
+    setLoading(true)
     e.preventDefault();
     if (
       name &&
@@ -45,6 +48,7 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
         console.log(error.message);
       }
     }
+    setLoading(false)
   };
 
 
@@ -119,7 +123,7 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
             readOnly
           />
           <button className="button" type="submit">
-            Continue to payment
+            {loading? "Processing...":"Continue to payment"}
           </button>
         </div>
       </form>

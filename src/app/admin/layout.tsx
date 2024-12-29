@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistProtest.variable} w-full h-screen flex`}>
+      <body className={`${geistProtest.variable} w-full  flex`}>
       <Dashboard />
        {children}
       </body>

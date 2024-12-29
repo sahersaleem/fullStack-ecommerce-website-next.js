@@ -12,11 +12,13 @@ import { FaX } from "react-icons/fa6";
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const handleOpen =()=>{
+    setIsOpen(false)
+  }
   return (
 
     <div
-          className={` ${isOpen?'xs:w-full sm:w-1/4 xs:absolute h-screen lg:relative':'w-16 h-screen '} bg-[#F2F9FF] h-auto px-4 py-6 transition-all duration-500 ease-in-out text-[#433878] z-50`}
+          className={` ${isOpen?'xs:w-full sm:w-1/4 xs:absolute h-full min-h-[100vh] lg:relative':'w-16 h-full min-h-[100vh] '} bg-[#F2F9FF] h-full min-h-[100vh] px-4 py-6 transition-all duration-500 ease-in-out text-[#433878] z-40`}
         >
           <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -45,24 +47,19 @@ const Dashboard = () => {
          } 
         </div>
 {isOpen &&    <div className="flex flex-col mb-4 mt-14 items-center justify-center">
-            <Link href={"/admin/dashboard"} className="dashboardLink">
+            <Link href={"/admin/dashboard"} className="dashboardLink" onClick={handleOpen}>
               Dashboard
             </Link>
-            <Link href={"/admin/products"} className="dashboardLink">
+            <Link href={"/admin/products"} className="dashboardLink" onClick={handleOpen}>
               Products
             </Link>
-            <Link href={"/admin/categories"} className="dashboardLink">
+            <Link href={"/admin/categories"} className="dashboardLink" onClick={handleOpen}>
               Categories
             </Link>
-            <Link href={"/admin/orders"} className="dashboardLink">
+            <Link href={"/admin/orders"} className="dashboardLink" onClick={handleOpen}>
        Orders
             </Link>
-            <Link href={"/"} className="dashboardLink">
-              Settings
-            </Link>
-            <Link href={"/"} className="dashboardLink">
-              Revenue
-            </Link>
+            
         
           </div>}
        

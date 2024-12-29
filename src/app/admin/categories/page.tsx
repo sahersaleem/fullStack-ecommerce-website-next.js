@@ -135,27 +135,27 @@ const Page = () => {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <button className="button w-28" onClick={addCategory}>
+            <button className="button w-28 xs:text-xs lg:text-sm" onClick={addCategory}>
               Add category
             </button>
           </div>
           <table className="mt-4">
             <thead>
-              <tr>
-                <td className="w-auto bg-slate-200 p-2 rounded-md">
+              <tr className="xs:text-xs lg:text-sm">
+                <td className="w-auto bg-slate-200 lg:p-2 rounded-md">
                   Category Name
                 </td>
-                <td className="w-auto bg-slate-200 p-2 rounded-md">
+                <td className="w-auto bg-slate-200 lg:p-2 rounded-md">
                   Parent Category
                 </td>
               </tr>
             </thead>
             <tbody>
-              {  loading?  <div className="w-full h-screen flex"> <CssLoaders/></div>:categories
+              {  loading?  <div className="w-full h-screen flex "> <CssLoaders/></div>:categories
                 ? categories.map((item, index) => (
                     <tr
                       key={item._id}
-                      className="w-full border-b rounded-md shadow-sm text-xl px-5 py-3"
+                      className="w-full border-b rounded-md shadow-sm lg:text-xl px-5 py-3 xs:text-xs "
                     >
                       <td className="">{item.name}</td>
                       <td className="">{item.parent?.name}</td>

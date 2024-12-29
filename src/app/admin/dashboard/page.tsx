@@ -11,7 +11,7 @@ const page = async () => {
          redirect("/")
     }
   return (
-    <div className=" bg-white text-[#433878] w-full  ">
+    <div className=" bg-white text-[#433878] w-full h-full  ">
     
       <div className="flex flex-row justify-around p-10">
         <h1 className="text-center lg:text-3xl xs:text-lg">

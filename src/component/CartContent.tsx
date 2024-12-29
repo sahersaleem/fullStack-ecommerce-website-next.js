@@ -21,21 +21,22 @@ const CartContent = () => {
 
   useEffect(() => {
     const findProducts = debounce( async () => {
-    
+      setLoading(true)
       if (cartProducts.length > 0) {
         try {
-          setLoading(true)
+        
           const productsFinfById = await axios.post("/api/cart", {
             id: cartProducts,
           });
           setProductsData(productsFinfById.data);
-          setLoading(false)
+        
         } catch (error: any) {
           console.log(error.message);
         }
       } else {
         setProductsData([]);
       }
+      setLoading(false)
     },3000)
 findProducts()
 
@@ -75,9 +76,11 @@ return ()=>findProducts.cancel()
               <p>Price</p>
               <p>Quantity</p>
             </div>
-            {loading ? (
+            {loading && (
+              <div className="w-full h-screen flex justify-center ">
               <CssLoaders />
-            ) : productsData.length > 0 ? (
+              </div>)}
+            { productsData.length>0 ? (
               productsData.map((item) => (
                 <div
                   key={item._id}

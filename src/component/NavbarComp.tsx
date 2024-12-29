@@ -10,7 +10,9 @@ const NavbarComp = () => {
 
 const [isOpen , setIsOpen] = useState<boolean>(false)
 
-
+const handleOpen =()=>{
+  setIsOpen(false)
+}
 
 
 
@@ -25,6 +27,7 @@ const [isOpen , setIsOpen] = useState<boolean>(false)
         <Link
             href={"/"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
+            onClick={handleOpen}
           >
             {" "}
             Home
@@ -32,12 +35,14 @@ const [isOpen , setIsOpen] = useState<boolean>(false)
           <Link
             href={"/user/shop"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
+            onClick={handleOpen}
           >
             Shop 
           </Link>
           <Link
             href={"/user/categories"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
+            onClick={handleOpen}
           >
           Categories
           </Link>
@@ -45,12 +50,14 @@ const [isOpen , setIsOpen] = useState<boolean>(false)
           <Link
             href={"/user/orders"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
+            onClick={handleOpen}
           >
            Orders
           </Link>
           <Link
             href={"/user/contact"}
             className="hover:text-[#717fe0] transition-all 0.3 ease"
+            onClick={handleOpen}
           >
             Contact
           </Link>

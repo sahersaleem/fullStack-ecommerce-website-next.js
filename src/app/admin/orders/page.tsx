@@ -44,8 +44,8 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen">
-      <Table>
+    <div className="w-full h-full pb-20 ">
+      <Table className="xs:text-xs lg:text-sm">
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
