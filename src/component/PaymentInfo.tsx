@@ -1,12 +1,11 @@
 "use client";
 
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import CssLoaders from "./Loaders";
 
-
-const PaymentInfo = ({ ids }:{ids:string[]}) => {
+const PaymentInfo = ({ ids }: { ids: string[] }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [city, setCity] = useState<string>("");
@@ -14,11 +13,32 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
 
   const [country, setCountry] = useState<string>("");
   const [street, setStreet] = useState<string>("");
-  const [loading , setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
   const products = ids;
 
-  const handleSubmit = async (e:any) => {
-    setLoading(true)
+  useEffect(() => {
+ const {name , email , country , street , postalAddress , city} =JSON.parse( localStorage.getItem("paymentInfo")!)
+ 
+setName(name)
+setCity(city)
+setEmail(email)
+setCountry(country)
+setStreet(street)
+setPostalAddress(postalAddress)
+
+ 
+
+  }, []);
+
+  const savePaymentInfo = () => {
+    const paymentInfo = { name, email, city, country, street, postalAddress };
+    if (window !== undefined) {
+      localStorage.setItem("paymentInfo", JSON.stringify(paymentInfo));
+    }
+  };
+
+  const handleSubmit = async (e: any) => {
+    setLoading(true);
     e.preventDefault();
     if (
       name &&
@@ -48,13 +68,11 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
         console.log(error.message);
       }
     }
-    setLoading(false)
+
+    setLoading(false);
+    savePaymentInfo();
   };
 
-
- 
-  
-  
   return (
     <div className="shadow-md px-4 py-3">
       <h1 className="font-poppins text-3xl text-center font-bold mb-7">
@@ -70,7 +88,6 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
             onChange={(e) => {
               setName(e.target.value);
             }}
-           
           />
           <Input
             placeholder="email"
@@ -123,7 +140,7 @@ const PaymentInfo = ({ ids }:{ids:string[]}) => {
             readOnly
           />
           <button className="button" type="submit">
-            {loading? "Processing...":"Continue to payment"}
+            {loading ? "Processing..." : "Continue to payment"}
           </button>
         </div>
       </form>

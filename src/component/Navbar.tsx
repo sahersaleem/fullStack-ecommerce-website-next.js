@@ -68,10 +68,10 @@ const Navbar = async () => {
        <CartLength/>
        
       </div>
-      <div>
+      <div className="-mt-2">
         {session && session?.user ? (
           <>
-            <form className="flex xs:gap-2 lg:gap-5 justify-center items-center"
+            <form className="flex xs:gap-2 lg:gap-5 justify-center items-center "
               action={async () => {
                 "use server";
                 await signOut({ redirectTo: "/" });
