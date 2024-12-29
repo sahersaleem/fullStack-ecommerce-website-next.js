@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 const Page = async () => {
   const session = await auth();
   const userEmail = session?.user.email;
-  if(!session?.user.email){
+  if(!userEmail){
     redirect('/')
   }
   return (

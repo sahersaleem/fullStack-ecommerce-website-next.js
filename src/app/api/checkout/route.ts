@@ -78,6 +78,7 @@ export async function GET(req: NextRequest) {
     console.log(email);
     if (email) {
       const ordersByEmail = await OrderSchema.find({ email: email });
+      console.log(ordersByEmail)
       return NextResponse.json({ordersByEmail});
     }
     const orders = await OrderSchema.find({});

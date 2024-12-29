@@ -23,6 +23,7 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
     const getOrderofSpecificUser = async () => {
       setLoading(true);
       const res = await axios.get(`/api/checkout?userEmail=${userEmail}`);
+      console.log(res.data)
       setUserOrder(res.data.ordersByEmail);
       setLoading(false);
     };
@@ -32,7 +33,7 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
     <div className="w-full h-auto mt-10  xs:px-5 lg:px-10 pb-10">
       <div className="flex flex-wrap gap-10 justify-center items-center ">
         {loading&&<div className="flex justify-center items-center w-full h-screen"><CssLoaders/></div>}
-        {userOrder.map((i, index) => (
+        {userOrder && userOrder.map((i, index) => (
           <Card
             key={i._id}
             className="shadow-xl p-4 max-w-sm xs:max-h-[450px] xs:h-[450px] lg:h-[400px] lg:max-h-[400px]"
@@ -71,7 +72,7 @@ const Orders = ({ userEmail }: { userEmail: string }) => {
                 
               </TableBody>
               <TableCaption className=" text-center text-xs w-full">
-                Date : {i.createdAt?.substring(0, 10)}
+                Date : {i.createdAt!.substring(0, 10)}
               </TableCaption>
             </Table>
           </Card>
