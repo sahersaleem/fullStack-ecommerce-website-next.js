@@ -71,7 +71,7 @@ const Navbar = async () => {
       <div className="-mt-2">
         {session && session?.user ? (
           <>
-            <form className="flex xs:gap-2 lg:gap-5 justify-center items-center "
+            <form className="flex xs:gap-2 lg:gap-5 justify-center items-center pr-6"
               action={async () => {
                 "use server";
                 await signOut({ redirectTo: "/" });
