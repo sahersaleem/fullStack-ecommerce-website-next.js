@@ -5,13 +5,13 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IProducts } from "@/component/ProductForm";
-
+import { useCart } from "@/component/CartContext";
 import Image from "next/image";
-
+import toast , {Toaster} from 'react-hot-toast'
 const Page = () => {
   const { id } = useParams();
   const [productInfo, setProductsInfo] = useState<IProducts | null>(null);
-
+   const { cartProducts, addProducts, removeProduct ,addProductsInCart} = useCart()
   useEffect(() => {
     const getProductsById = async () => {
       try {
@@ -26,8 +26,14 @@ const Page = () => {
       getProductsById();
     }
   }, [id]);
+
+
+
+
+
+
   return (
-    <div className="w-auto h-auto mt-44 pb-10">
+    <div className="w-auto h-auto mt-44 pb-10"><Toaster reverseOrder={false} position="top-right"/>
       <h1 className="text-center text-3xl font-playFairDisplay font-semibold">
         {productInfo?.name}
       </h1>
@@ -55,6 +61,7 @@ const Page = () => {
           <p className="font-bold font-poppins text-2xl">
             Only in ${productInfo.price}
           </p>
+          <button className="button w-[100px]" onClick={()=>{addProductsInCart(productInfo._id!)}}>Add to Cart</button>
         </div>
       ) : (
         ""
